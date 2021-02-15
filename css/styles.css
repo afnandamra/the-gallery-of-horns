@@ -1,0 +1,35 @@
+@import url('reset.css');
+/* @import url('base.css'); */
+*{
+    box-sizing: border-box;
+    text-align: center;
+}
+h1{
+    font-size: xx-large;
+    font-weight: 700;
+}
+#photo-template{
+    display: none;
+}
+main>div{
+    width: 20%;
+    height: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+}
+
+img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    max-height: 200px;
+    padding: 5px;
+}
+h2{
+    font-size: large;
+    font-weight: 700;
+}

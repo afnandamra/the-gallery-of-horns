@@ -2,7 +2,7 @@
 
 I build an app with a direct and powerful purpose. It does all of the things that it accomplishes well. I should describe the purpose and functionality so those that visit my README understand the app
 
-### Author: Student/Group Name
+### Author: Afnan Damra
 
 ### Links and Resources
 * [submission PR](http://xyz.com)
@@ -10,21 +10,17 @@ I build an app with a direct and powerful purpose. It does all of the things tha
 
 ## LAB: 02 - jQuery Selectors and Events
 
-### Feature 1
+### Feature #1: Display images
 
-Number and name of feature: ________________________________
+Estimate of time needed to complete: one hour
 
-Estimate of time needed to complete: _____
+Start time: 2:20pm
 
-Start time: _____
+Finish time: 3:33pm
 
-Finish time: _____
+Actual time needed to complete: one hour and ten minutes
 
-Actual time needed to complete: _____
-
-### Feature 2
-
-Number and name of feature: ________________________________
+### Feature #2: Filter images
 
 Estimate of time needed to complete: _____
 
@@ -34,9 +30,7 @@ Finish time: _____
 
 Actual time needed to complete: _____
 
-### Feature 3
-
-Number and name of feature: ________________________________
+### Feature #3: Style the application
 
 Estimate of time needed to complete: _____
 
