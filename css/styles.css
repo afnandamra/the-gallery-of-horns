@@ -1,5 +1,8 @@
 @import url('reset.css');
-/* @import url('base.css'); */
+@import url('base.css');
+@import url('layouts.css');
+@import url('modules.css');
+
 *{
     box-sizing: border-box;
     text-align: center;
@@ -7,6 +10,7 @@
 h1{
     font-size: xx-large;
     font-weight: 700;
+    line-height: 3;
 }
 #photo-template{
     display: none;

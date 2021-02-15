@@ -1,44 +1,52 @@
 'use strict';
-// <template id="photo-template">
-// <h2></h2>
-// <img src="" alt="">
-// <p></p>
-// </template>
-
-// {
-//     "image_url": "http://3.bp.blogspot.com/_DBYF1AdFaHw/TE-f0cDQ24I/AAAAAAAACZg/l-FdTZ6M7z8/s1600/Unicorn_and_Narwhal_by_dinglehopper.jpg",
-//     "title": "UniWhal",
-//     "description": "A unicorn and a narwhal nuzzling their horns",
-//     "keyword": "narwhal",
-//     "horns": 1
-// }
 
 $(function () {
+    let keywords = [];
+    let objects = [];
     // get data
     $.ajax('./data/page-1.json').then(data => {
         data.forEach(element => {
-            // console.log(element.title);
             let newTemplate = new Template(
                 element.image_url,
                 element.title,
                 element.description,
                 element.keyword,
                 element.horns);
-            // console.log(newTemplate);
             newTemplate.render();
-        });
+            newTemplate.addArray();
+            objects.push(newTemplate);
 
+        });
+        filter();
+
+        // event
+        $('select').on('change', function () {
+            $('main').html('');
+            objects.forEach(item => {
+                if ($(this).val() === item.keyword) {
+                    item.render();
+                }
+            })
+            if ($(this).val() === 'default') {
+                objects.forEach(item => {
+                    item.render();
+                })
+            }
+        })
     })
 
     // constructor
-    let keywords = [];
     function Template(url, title, description, keyword, horns) {
         this.url = url;
         this.title = title;
         this.description = description;
         this.keyword = keyword;
         this.horns = horns;
-        keywords.push(this.keyword);
+    }
+    Template.prototype.addArray = function () {
+        if (!keywords.includes(this.keyword)) {
+            keywords.push(this.keyword);
+        }
     }
 
     // render method
@@ -50,10 +58,16 @@ $(function () {
         tem.find('p').text(this.description);
         $('main').append(tem);
     }
+
     // render keywords
+    const filter = () => {
+        keywords.forEach(item => {
+            let selectKey = $('option').first().clone();
+            selectKey.attr('value', item);
+            selectKey.text(item);
+            $('select').append(selectKey);
+        })
+    }
 
-
-
-    // 
 
 });
