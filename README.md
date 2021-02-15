@@ -1,6 +1,6 @@
 # The Gallery of Horns
 
-I build an app with a direct and powerful purpose. It does all of the things that it accomplishes well. I should describe the purpose and functionality so those that visit my README understand the app
+Website to get object data from .json file and render them filtered by keyword.
 
 ### Author: Afnan Damra / Izz Eldeen Al-Qawasmeh
 
@@ -32,10 +32,10 @@ Actual time needed to complete: 1 hour and 10 minutes
 
 ### Feature #3: Style the application
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 30 minutes
 
-Start time: _____
+Start time: 4:50pm
 
-Finish time: _____
+Finish time: 5:05pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 15 minutes

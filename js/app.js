@@ -21,6 +21,7 @@ $(function () {
 
         // event
         $('select').on('change', function () {
+            // $('div').css('display', 'none');
             $('main').html('');
             objects.forEach(item => {
                 if ($(this).val() === item.keyword) {
