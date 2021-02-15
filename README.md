@@ -5,8 +5,8 @@ Website to get object data from .json file and render them filtered by keyword.
 ### Author: Afnan Damra / Izz Eldeen Al-Qawasmeh
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-* [Deployed Page]()
+* [submission PR](https://github.com/afnandamra/the-gallery-of-horns/pull/2)
+* [Deployed Page](https://afnandamra.github.io/the-gallery-of-horns/)
 
 ## LAB: 02 - jQuery Selectors and Events
 
