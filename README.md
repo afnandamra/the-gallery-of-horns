@@ -1,8 +1,8 @@
 # The Gallery of Horns
 
-I build an app with a direct and powerful purpose. It does all of the things that it accomplishes well. I should describe the purpose and functionality so those that visit my README understand the app
+Website to get object data from .json file and render them filtered by keyword.
 
-### Author: Student/Group Name
+### Author: Afnan Damra / Izz Eldeen Al-Qawasmeh
 
 ### Links and Resources
 * [submission PR](http://xyz.com)
@@ -10,38 +10,32 @@ I build an app with a direct and powerful purpose. It does all of the things tha
 
 ## LAB: 02 - jQuery Selectors and Events
 
-### Feature 1
+### Feature #1: Display images
 
-Number and name of feature: ________________________________
+Estimate of time needed to complete: 1 hour
 
-Estimate of time needed to complete: _____
+Start time: 2:20pm
 
-Start time: _____
+Finish time: 3:30pm
 
-Finish time: _____
+Actual time needed to complete: 1 hour and 10 minutes
 
-Actual time needed to complete: _____
+### Feature #2: Filter images
 
-### Feature 2
+Estimate of time needed to complete: 1 hour
 
-Number and name of feature: ________________________________
+Start time: 3:40pm
 
-Estimate of time needed to complete: _____
+Finish time: 4:50pm
 
-Start time: _____
+Actual time needed to complete: 1 hour and 10 minutes
 
-Finish time: _____
+### Feature #3: Style the application
 
-Actual time needed to complete: _____
+Estimate of time needed to complete: 30 minutes
 
-### Feature 3
+Start time: 4:50pm
 
-Number and name of feature: ________________________________
+Finish time: 5:05pm
 
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
+Actual time needed to complete: 15 minutes
