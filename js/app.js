@@ -3,11 +3,12 @@
 $(function () {
     let keywords = [];
     let objects = [];
+
     // get data
     const page1 = () => {
+        keywords = [];
+        objects = [];
         $.ajax('./data/page-1.json').then(data => {
-            keywords = [];
-            objects = [];
             data.forEach(element => {
                 let newTemplate = new Template(
                     element.image_url,
@@ -16,19 +17,16 @@ $(function () {
                     element.keyword,
                     element.horns);
                 objects.push(newTemplate);
-
             });
             filter();
             sortByName(objects);
-            objects.forEach(obj => {
-                let renderedObj = obj.render();
-                $('#cards').append(renderedObj);
-            })
-            // event
+            // events
             select();
             sort();
         })
     }
+
+    // page 2 data
     const page2 = () => {
         keywords = [];
         objects = [];
@@ -46,30 +44,26 @@ $(function () {
             });
             filter();
             sortByName(objects);
-            objects.forEach(obj => {
-                let renderedObj = obj.render();
-                $('#cards').append(renderedObj);
-            })
-            // event
+            // events
             select();
             sort();
         })
     }
+
+    // default render
     page1();
 
-    // sorting
-
-
+    // click events
     $('#page1').click(function () {
         $('#cards').html('');
-        $('select').first().empty();
+        $('select').first().children().not(':first-child').remove();
         page1();
         $('#sort').val('default');
     });
 
     $('#page2').on('click', function () {
         $('#cards').html('');
-        $('select').first().empty();
+        $('select').first().children().not(':first-child').remove();
         page2();
         $('#sort').val('default');
     });
@@ -77,7 +71,6 @@ $(function () {
     // filtering
     function select() {
         $('select').first().on('change', function () {
-            // $('div').css('display', 'none');
             $('#cards').empty();
             objects.forEach(item => {
                 if ($(this).val() === item.keyword) {
@@ -93,17 +86,17 @@ $(function () {
     }
 
 
-    // sorting
+    // sorting functions
     function sort() {
         $('#sort').on('change', function () {
             $('#cards').html('');
-            console.log($(this).val());
             if ($(this).val() === 'title') {
                 sortByName(objects);
             } else if ($(this).val() === 'horns') {
                 sortByHorns(objects);
             } else {
                 $(this).val('default');
+                objects.reverse();
                 objects.forEach(obj => {
                     let renderedObj = obj.render();
                     $('#cards').append(renderedObj);
@@ -116,6 +109,7 @@ $(function () {
         objArr.sort((a, b) => {
             return a.title.localeCompare(b.title);
         });
+        // rendering
         objArr.forEach(obj => {
             let renderedObj = obj.render();
             $('#cards').append(renderedObj);
@@ -128,43 +122,12 @@ $(function () {
             else if (a > b) return 1;
             else return 0;
         })
+        // rendering
         objArr.forEach(obj => {
             let renderedObj = obj.render();
             $('#cards').append(renderedObj);
         })
     }
-
-
-
-    // constructor
-    function Template(url, title, description, keyword, horns) {
-        this.url = url;
-        this.title = title;
-        this.description = description;
-        this.keyword = keyword;
-        this.horns = horns;
-    }
-    Template.prototype.addArray = function () {
-        if (!keywords.includes(this.keyword)) {
-            keywords.push(this.keyword);
-        }
-    }
-
-    // render method
-    Template.prototype.render = function () {
-        let tem = $('#template').html();
-        let card = Mustache.render(tem, this);
-        return card;
-
-        // let tem = $('#photo-template').clone();
-        // tem.removeAttr('id');
-        // tem.find('h2').text(this.title);
-        // tem.find('img').attr('src', this.url);
-        // tem.find('p').text(this.description);
-        // $('main').append(tem);
-    }
-
-
 
     // render keywords
     const filter = () => {
@@ -179,5 +142,36 @@ $(function () {
         })
     }
 
+    // constructor
+    function Template(url, title, description, keyword, horns) {
+        this.url = url;
+        this.title = title;
+        this.description = description;
+        this.keyword = keyword;
+        this.horns = horns;
+    }
+
+    // adding keywords without duplicates
+    Template.prototype.addArray = function () {
+        if (!keywords.includes(this.keyword)) {
+            keywords.push(this.keyword);
+        }
+    }
+
+    // render method
+    Template.prototype.render = function () {
+        let tem = $('#template').html();
+        let card = Mustache.render(tem, this);
+        return card;
+    }
 
 });
+
+
+    // old way render
+        // let tem = $('#photo-template').clone();
+        // tem.removeAttr('id');
+        // tem.find('h2').text(this.title);
+        // tem.find('img').attr('src', this.url);
+        // tem.find('p').text(this.description);
+        // $('main').append(tem);
