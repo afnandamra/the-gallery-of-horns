@@ -29,20 +29,14 @@ $(function () {
     // default render
     page(1);
 
-    // click events
-    $('#page1').click(function () {
+    // click event
+    $('button').click(function () {
         $('#cards').html('');
         $('select').first().children().not(':first-child').remove();
-        page(1);
+        let buttonId = $(this).attr('id');
+        page(buttonId);
         $('#sort').val('default');
-    });
-
-    $('#page2').on('click', function () {
-        $('#cards').html('');
-        $('select').first().children().not(':first-child').remove();
-        page(2);
-        $('#sort').val('default');
-    });
+    })
 
     // filtering
     function select() {
