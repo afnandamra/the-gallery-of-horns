@@ -7,11 +7,13 @@ $(function () {
 
 let keywords = [];
 let objects = [];
+let afterFilter = '';
 
 // get data
 function page(page) {
     keywords = [];
     objects = [];
+    afterFilter = '';
     $.ajax(`./data/page-${page}.json`).then(data => {
         data.forEach(element => {
             let newTemplate = new Template(
@@ -25,8 +27,9 @@ function page(page) {
         filter();
         sortByName(objects);
         // events
-        select();
         sort();
+        select();
+
     })
 }
 
@@ -34,14 +37,14 @@ function page(page) {
 $('button').click(function () {
     $('#cards').html('');
     $('select').first().children().not(':first-child').remove();
-    let buttonId = $(this).attr('id');
-    page(buttonId);
+    page($(this).attr('id'));
     $('#sort').val('default');
 })
 
 // filtering
 function select() {
     $('select').first().on('change', function () {
+        afterFilter = $(this).val();
         $('#cards').empty();
         objects.forEach(item => {
             if ($(this).val() === item.keyword) {
@@ -60,17 +63,25 @@ function select() {
 function sort() {
     $('#sort').on('change', function () {
         $('#cards').html('');
+        console.log(afterFilter);
         if ($(this).val() === 'title') {
             sortByName(objects);
         } else if ($(this).val() === 'horns') {
             sortByHorns(objects);
         } else {
-            $(this).val('default');
-            objects.reverse();
-            objects.forEach(obj => {
-                let renderedObj = obj.render();
-                $('#cards').append(renderedObj);
-            })
+            shuffle(objects);
+        }
+    })
+}
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+    array.forEach(obj => {
+        if (afterFilter === '') {
+            $('#cards').append(obj.render());
+        }
+        else if (afterFilter === obj.keyword) {
+            $('#cards').append(obj.render());
         }
     })
 }
@@ -81,21 +92,29 @@ function sortByName(objArr) {
     });
     // rendering
     objArr.forEach(obj => {
-        let renderedObj = obj.render();
-        $('#cards').append(renderedObj);
+        if (afterFilter === '') {
+            $('#cards').append(obj.render());
+        }
+        else if (afterFilter === obj.keyword) {
+            $('#cards').append(obj.render());
+        }
     })
 }
 
 function sortByHorns(objArr) {
     objArr.sort((a, b) => {
         if (a.horns < b.horns) return -1;
-        else if (a > b) return 1;
+        else if (a.horns > b.horns) return 1;
         else return 0;
     })
     // rendering
     objArr.forEach(obj => {
-        let renderedObj = obj.render();
-        $('#cards').append(renderedObj);
+        if (afterFilter === '') {
+            $('#cards').append(obj.render());
+        }
+        else if (afterFilter === obj.keyword) {
+            $('#cards').append(obj.render());
+        }
     })
 }
 
