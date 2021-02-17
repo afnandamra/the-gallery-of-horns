@@ -5,10 +5,10 @@ $(function () {
     let objects = [];
 
     // get data
-    const page1 = () => {
+    const page = a => {
         keywords = [];
         objects = [];
-        $.ajax('./data/page-1.json').then(data => {
+        $.ajax(`./data/page-${a}.json`).then(data => {
             data.forEach(element => {
                 let newTemplate = new Template(
                     element.image_url,
@@ -17,30 +17,6 @@ $(function () {
                     element.keyword,
                     element.horns);
                 objects.push(newTemplate);
-            });
-            filter();
-            sortByName(objects);
-            // events
-            select();
-            sort();
-        })
-    }
-
-    // page 2 data
-    const page2 = () => {
-        keywords = [];
-        objects = [];
-        $.ajax('./data/page-2.json').then(data => {
-            console.log(data);
-            data.forEach(element => {
-                let newTemplate = new Template(
-                    element.image_url,
-                    element.title,
-                    element.description,
-                    element.keyword,
-                    element.horns);
-                objects.push(newTemplate);
-
             });
             filter();
             sortByName(objects);
@@ -51,20 +27,20 @@ $(function () {
     }
 
     // default render
-    page1();
+    page(1);
 
     // click events
     $('#page1').click(function () {
         $('#cards').html('');
         $('select').first().children().not(':first-child').remove();
-        page1();
+        page(1);
         $('#sort').val('default');
     });
 
     $('#page2').on('click', function () {
         $('#cards').html('');
         $('select').first().children().not(':first-child').remove();
-        page2();
+        page(2);
         $('#sort').val('default');
     });
 
@@ -84,7 +60,6 @@ $(function () {
             }
         })
     }
-
 
     // sorting functions
     function sort() {
